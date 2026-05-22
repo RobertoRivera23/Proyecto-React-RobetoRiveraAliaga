@@ -1,0 +1,27 @@
+.gridContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cardWrapper {
+  height: 100%;
+  width: 280px;
+  flex-shrink: 0;
+}
+
+.cardWrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+@media (max-width: 768px) {
+  .cardWrapper {
+    width: 100%;
+    max-width: 320px;
+  }
+}

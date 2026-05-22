@@ -1,0 +1,27 @@
+   [
+        { "id": 1, 
+        "nombre": "Inflador 12V", 
+        "precio": 15000, 
+        "imagen": "/images/Inflador12V.jpg", 
+        "detalle": "Inflador de auto, con enchufe USB a 12V, que se puede conectar directamente al encendedor del auto.",
+        "stock": 50,
+        "destacado": "true"
+    },
+        { "id": 2, 
+        "nombre": "Vaso Termico 1/2 Litro", 
+        "precio": 10000, 
+        "imagen": "/images/VasTermico.jpg",
+        "detalle": "Vaso termico de 750ml manteine la temperatura por hasta 24hs, varios colores.",
+        "stock": 100,
+        "destacado": "true" 
+    },
+        { "id": 3, 
+        "nombre": "Auricular BT vincha", 
+        "precio": 5000, 
+        "imagen": "/images/AuricularBt.jpg",
+        "detalle": "Lentes Inteligentes, fácil manejo y visualización desde la app del celular.",
+        "stock": 20,
+        "destacado": "false" 
+    }
+   ]
+    

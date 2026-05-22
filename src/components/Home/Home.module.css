@@ -1,0 +1,228 @@
+.hero {
+  width: 100%;
+  background-image: url("/images/fondo.jpg");
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  height: 80vh;
+  min-height: 400px;
+  position: relative;
+}
+
+.heroOverlay {
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.heroContent {
+  max-width: 800px; 
+  width: 90%;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 20px;
+  backdrop-filter: blur(2px);
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  font-weight: 800;
+ 
+  color: white;
+}
+
+.heroSubtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color:#f8fafc
+}
+
+.heroButtons {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.btnPrimary, .btnSecondary {
+  padding: 0.8rem 1.8rem;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.2s, background 0.2s;
+  display: inline-block;
+}
+
+.btnPrimary {
+  background-color: #2c7da0;
+  color: white;
+  border: none;
+}
+
+.btnPrimary:hover {
+  background-color: #1f5e7a;
+  transform: translateY(-2px);
+}
+
+.btnSecondary {
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.btnSecondary:hover {
+  background-color: rgba(255,255,255,0.1);
+  transform: translateY(-2px);
+}
+
+/* Barra de beneficios */
+.benefitsBar {
+  background-color: #f8fafc;
+  border-top: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.benefitsContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 0 1rem;
+}
+
+.benefitItem {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #1f5e7a;
+}
+
+/* Secciones generales */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #0F172A;
+}
+
+/* Productos destacados (ya usa ProductosList, solo le agregamos margen) */
+.featured {
+  background-color: white;
+}
+
+/* Por qué elegirnos */
+.whyUs {
+  background-color:  #f8fafc;
+  padding: 3rem 1rem;
+}
+
+.cards {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 1.8rem;
+  text-align: center;
+  width: 280px;
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 8px 10px -6px rgba(0,0,0,0.02);
+  transition: all 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: all 0.2s;
+}
+
+.cardIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Testimonios */
+.testimonials {
+  background-color: white;
+}
+
+.testimonialGrid {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.testimonial {
+  background: #f8fafc;
+  padding: 1.5rem;
+  border-radius: 16px;
+  max-width: 400px;
+  font-style: italic;
+  border-left: 4px solid #2c7da0;
+}
+
+.testimonial span {
+  display: block;
+  margin-top: 0.8rem;
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Equipo */
+.team {
+  background-color: #f1f5f9;
+}
+
+.teamGrid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.teamMember {
+  text-align: center;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  width: 200px;
+}
+
+.avatar {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2rem;
+  }
+  .heroSubtitle {
+    font-size: 1rem;
+  }
+  .benefitsContainer {
+    justify-content: center;
+  }
+  .cards, .testimonialGrid, .teamGrid {
+    flex-direction: column;
+    align-items: center;
+  }
+}

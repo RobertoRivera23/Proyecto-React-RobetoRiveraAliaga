@@ -1,0 +1,31 @@
+[
+        { 
+        "id": 1, 
+        "nombre": "Enrique Rivera",
+        "tarea": "Product Owner",
+        "imagen": "/images/Ernesto.png",
+        "correo": "enriquerivera@commerce.com"    
+        },
+        {
+        "id": 2,  
+        "nombre": "Maria Gomez", 
+        "tarea": "Diseñadora UI/UX",
+        "imagen": "/images/Maria.png",
+        "correo": "mariagomez@commerce.com"      
+        },
+        {
+        "id": 3, 
+        "nombre": "Roberto Rivera", 
+        "tarea": "Desarrollador Back End",
+        "imagen": "/images/Roberto.png",
+        "correo": "robertorivera@commerce.com"     
+        },
+        
+        { 
+        "id": 4, 
+        "nombre": "Ernesto Farias",
+        "tarea": "Desarrollador Front End",
+        "imagen": "/images/Enrique.png",
+        "correo": "ernstofarias@commerce.com"     
+        }
+    ]

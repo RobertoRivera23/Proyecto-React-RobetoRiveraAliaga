@@ -1,0 +1,149 @@
+.contactPage {
+  width: 100%;
+  padding: 2rem 1rem;
+  min-height: 80vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.infoColumn {
+  flex: 1;
+  background: linear-gradient(135deg,#e3eef3 0%, #1f5e7a 100% );
+  color: white;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.contactDetails {
+  margin-top: 1rem;
+}
+
+.contactDetails h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  border-left: 4px solid #ffc107;
+  padding-left: 0.8rem;
+}
+
+.contactDetails p {
+  margin: 0.6rem 0;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.formColumn {
+  flex: 1.2;
+  padding: 2rem;
+  background: white;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form h3 {
+  font-size: 1.4rem;
+  color: #1f5e7a;
+  margin-bottom: 0.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.formGroup label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.formGroup input,
+.formGroup textarea {
+  padding: 0.7rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  transition: border 0.2s;
+  font-family: inherit;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: #1f5e7a;
+  box-shadow: 0 0 0 2px rgba(31, 94, 122, 0.2);
+}
+
+.error {
+  color: #d9534f;
+  font-size: 0.75rem;
+  margin-top: 0.2rem;
+}
+
+.button {
+  background-color: #1f5e7a;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 40px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 0.5rem;
+}
+
+.button:hover {
+  background-color: #0d3b4f;
+}
+
+.button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    border-radius: 16px;
+  }
+  .infoColumn {
+    border-radius: 16px 16px 0 0;
+  }
+  .formColumn {
+    padding: 1.5rem;
+  }
+  .title {
+    font-size: 1.4rem;
+  }
+}

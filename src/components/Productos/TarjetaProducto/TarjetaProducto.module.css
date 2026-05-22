@@ -1,0 +1,12 @@
+.container {
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  color: #1f5e7a;
+  margin-bottom: 1.5rem;
+}

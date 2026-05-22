@@ -1,0 +1,48 @@
+.layoutContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ocupa al menos toda la pantalla */
+}
+
+.mainContent {
+  flex: 1; 
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 300; /* Letra fina para look minimalista */
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.subtitle {
+  color: #666;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* Layout.module.css */
+
+.gridSection {
+  margin-top: 2rem;
+  padding: 1rem;
+  /* Centramos la sección en caso de que el max-width sea menor al de la pantalla */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Opcional: un separador minimalista arriba de los productos */
+.gridSection::before {
+  content: "";
+  display: block;
+  width: 50px;
+  height: 2px;
+  background-color: #1a1a1a;
+  margin: 0 auto 2rem auto;
+}
