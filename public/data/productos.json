@@ -5,7 +5,8 @@
         "imagen": "/images/Inflador12V.jpg", 
         "detalle": "Inflador de auto, con enchufe USB a 12V, que se puede conectar directamente al encendedor del auto.",
         "stock": 50,
-        "destacado": "true"
+        "destacado": "true",
+        "categoria": "Hogar"
     },
         { "id": 2, 
         "nombre": "Vaso Termico 1/2 Litro", 
@@ -13,7 +14,8 @@
         "imagen": "/images/VasTermico.jpg",
         "detalle": "Vaso termico de 750ml manteine la temperatura por hasta 24hs, varios colores.",
         "stock": 100,
-        "destacado": "true" 
+        "destacado": "true",
+        "categoria": "Hogar" 
     },
         { "id": 3, 
         "nombre": "Auricular BT vincha", 
@@ -21,7 +23,24 @@
         "imagen": "/images/AuricularBt.jpg",
         "detalle": "Lentes Inteligentes, fácil manejo y visualización desde la app del celular.",
         "stock": 20,
-        "destacado": "false" 
+        "destacado": "false",
+        "catgoria": "Electronica" 
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
+    },
+    {
+
     }
+
    ]
     

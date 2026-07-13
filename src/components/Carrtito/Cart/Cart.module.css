@@ -1,0 +1,276 @@
+.cartContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.cartTitle {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 0.5rem;
+}
+
+.emptyCart {
+  text-align: center;
+  color: #888;
+  font-size: 1.2rem;
+  padding: 2rem 0;
+}
+
+.shopButton {
+  display: inline-block;
+  background: #e17055;
+  color: white;
+  padding: 0.8rem 2rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.shopButton:hover {
+  background: #d63031;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(225, 112, 85, 0.4);
+}
+
+.cartList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.cartItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s ease;
+}
+
+.cartItem:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.itemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+}
+
+.itemName {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #222;
+}
+
+.itemDetails {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.unitPrice {
+  color: #666;
+}
+
+.itemQuantity {
+  background-color: #f0f0f0;
+  padding: 0.1rem 0.6rem;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.itemSubtotal {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #222;
+  margin-right: 1rem;
+}
+
+.removeButton {
+  background-color: #ff6b6b;
+  color: #fff;
+  border: none;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.2s ease;
+}
+
+.removeButton:hover {
+  background-color: #e63946;
+}
+
+.removeButton:active {
+  transform: scale(0.96);
+}
+
+.cartSummary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px solid #e0e0e0;
+  padding-top: 1.5rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.cuponSection {
+  margin: 1rem 0;
+}
+.cuponForm {
+  display: flex;
+  gap: 0.5rem;
+}
+.cuponInput {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.cuponButton {
+  padding: 0.5rem 1rem;
+  background: #4299e1;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.cuponError {
+  color: #e53e3e;
+  margin-top: 0.25rem;
+}
+.cuponAplicado {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #e6fffa;
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-top: 0.25rem;
+}
+.eliminarCupon {
+  background: none;
+  border: none;
+  color: #e53e3e;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.summaryLine {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.3rem 0;
+}
+.discountAmount {
+  color: #38a169;
+}
+.totalLabel {
+  font-weight: bold;
+}
+.totalPrice {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #2b6cb0;
+}
+
+.actionButtons {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.clearButton,
+.checkoutButton {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.clearButton {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.clearButton:hover {
+  background-color: #d0d0d0;
+}
+
+.clearButton:active {
+  transform: scale(0.96);
+}
+
+.checkoutButton {
+  background-color: #2d8cff;
+  color: #fff;
+}
+
+.checkoutButton:hover {
+  background-color: #1a6fd1;
+}
+
+.checkoutButton:active {
+  transform: scale(0.96);
+}
+
+@media (max-width: 600px) {
+  .cartContainer {
+    padding: 1rem;
+  }
+
+  .cartItem {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .itemInfo {
+    width: 100%;
+    margin-bottom: 0.25rem;
+  }
+
+  .itemSubtotal {
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  .removeButton {
+    margin-left: auto;
+  }
+
+  .cartSummary {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8rem;
+  }
+
+  .actionButtons {
+    justify-content: stretch;
+  }
+
+  .clearButton,
+  .checkoutButton {
+    flex: 1;
+    text-align: center;
+  }
+}

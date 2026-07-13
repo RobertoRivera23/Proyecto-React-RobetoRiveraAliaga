@@ -6,7 +6,7 @@ function Footer(){
     return(
         <footer className={styles.footer}>
             <AsistentesList /> 
-            <p>&copy; 2025 - Mi Aplicación React</p>
+            <p>&copy; 2026 - Mi Aplicación React</p>
         </footer>
     );
 };

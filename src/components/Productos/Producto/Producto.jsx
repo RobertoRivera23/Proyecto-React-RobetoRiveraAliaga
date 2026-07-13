@@ -1,34 +1,54 @@
 import { useState } from "react";
 import styles from "./Producto.module.css";
+import { useCart } from "../../../Context/CartContext/CartContext";
 import { Link } from "react-router-dom";
 
+function Producto({ id, nombre, precio, imagen, detalle, stock, destacado }) {
+  // Obtenemos la función addToCart desde el contexto
+  const { addToCart } = useCart();
 
-function Producto({id, nombre, precio, imagen, detalle, stock, destacado }) {
-  // Manejamos el contador
+  // Estado para el contador de unidades
   const [contador, setContador] = useState(0);
 
+  // Incrementa el contador 
   const sumaContador = () => {
-    setContador(contador + 1);
+    setContador(prev => prev + 1);
   };
+
+  // Baja el contador no permite valores negativos
   const restaContador = () => {
     if (contador > 0) {
-      setContador(contador - 1);
+      setContador(prev => prev - 1);
     }
   };
 
-  // Manejamos el Favorito
+  // Estado para el favorito 
   const [esFavorito, setEsFavorito] = useState(false);
-
   const marcarComoFavorito = () => {
     setEsFavorito(!esFavorito);
   };
 
-  //Manejamos Agregar a Favorito
-  const addToCart = () => {
-    alert(`Producto:  ${nombre} agregado al carrito, Cantidad: ${contador}`);
+  // manejador para agregr al carrito
+  const handleAddToCart = () => {
+    // Si no selecciona unidades avisamos y salimos
+    if (contador === 0) {
+      alert("Debes seleccionar al menos una unidad");
+      return;
+    }
+
+    // Construimos el objeto producto  con lo que necesita el carrito
+    const producto = { id, nombre, precio, imagen };
+
+    // Llamamos al addToCart del contexto con la cantidad elegida
+    addToCart(producto, contador);
+
+    alert(`✅ ${nombre} agregado al carrito (x${contador})`);
+
+    // Reiniciamos el contador a 0 para la próxima selección
+    setContador(0);
   };
 
-  //Manejamos ver detalles
+  // Manejador para ver detalles 
   const verDetalles = () => {
     alert(`Detalles de ${nombre}: ${detalle || "Sin descripción"}`);
   };
@@ -38,11 +58,14 @@ function Producto({id, nombre, precio, imagen, detalle, stock, destacado }) {
       <span onClick={marcarComoFavorito} className={styles.favoriteIcon}>
         {esFavorito ? "⭐" : "☆"}
       </span>
+
       <div className={styles.imageWrapper}>
         <img src={imagen} alt={nombre} className={styles.productImage} />
       </div>
+
       <h3 className={styles.productTitle}>{nombre}</h3>
       <p className={styles.productPrice}>${precio}</p>
+
       <div className={styles.quantitySection}>
         <button onClick={restaContador} className={styles.quantityButton}>
           -
@@ -52,11 +75,10 @@ function Producto({id, nombre, precio, imagen, detalle, stock, destacado }) {
           +
         </button>
       </div>
+
       <div className={styles.actionButtons}>
-        <Link to={`/productos/${id}`}>
-          Ver detalles
-        </Link>
-        <button onClick={addToCart} className={styles.actionButton}>
+        <Link to={`/productos/${id}`}>Ver detalles</Link>
+        <button onClick={handleAddToCart} className={styles.actionButton}>
           Agregar al Carrito
         </button>
       </div>

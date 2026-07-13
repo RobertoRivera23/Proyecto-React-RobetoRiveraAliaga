@@ -1,80 +1,183 @@
 .formu {
   display: flex;
   flex-direction: column;
-  max-width: 24rem;
-  margin: 3rem auto;
-  padding: 1.5rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  gap: 1rem;
-  background-color: #fff;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 90%;
-}
-
-.formu label {
-  font-weight: bold;
-  margin-bottom: 0.25rem;
-  display: block;
-  color: #333;
-}
-
-.formu input {
-  width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1rem;
-  box-sizing: border-box;
-}
-
-.formu input:focus {
-  outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-}
-
-.formu div {
-  display: flex;
-  flex-direction: column;
-}
-
-.formu button {
-  background-color: #2c7da0;
-  color: white;
-  padding: 0.75rem;
-  border: none;
-  border-radius: 4px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  margin-top: 0.5rem;
-}
-
-.formu button:hover {
-  background-color: #1f5e7a;
+  max-width: 32rem;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9ecef;
+  gap: 1.25rem;
 }
 
 .formu h3 {
   text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
   margin: 0 0 0.5rem 0;
-  color: #333;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+/* Cada campo */
+.formu > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.formu label {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #334155;
+  letter-spacing: 0.3px;
+}
+
+.formu input,
+.formu textarea {
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background-color: #fafbfc;
+  box-sizing: border-box;
+}
+
+.formu input:focus,
+.formu textarea:focus {
+  outline: none;
+  border-color: #2c7da0;
+  box-shadow: 0 0 0 3px rgba(44, 125, 160, 0.15);
+  background-color: #ffffff;
+}
+
+.formu textarea {
+  min-height: 100px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.checkboxContainer {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0.25rem 0;
+}
+
+.checkboxContainer label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  margin: 0;
+}
+
+.checkboxContainer input[type="checkbox"] {
+  width: 1.2rem;
+  height: 1.2rem;
+  accent-color: #2c7da0;
+  cursor: pointer;
+}
+
+.botones {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.botones button {
+  flex: 1;
+  min-width: 120px;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #2c7da0;
+  color: white;
+}
+
+.botones button:hover:not(:disabled) {
+  background-color: #1f5e7a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(44, 125, 160, 0.2);
+}
+
+.botones button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.botones button[type="button"] {
+  background-color: #e9ecef;
+  color: #1e293b;
+}
+
+.botones button[type="button"]:hover {
+  background-color: #d1d5db;
+}
+
+.exito {
+  background-color: #d1fae5;
+  color: #065f46;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #10b981;
+  font-weight: 500;
+}
+
+.errorGeneral {
+  background-color: #fee2e2;
+  color: #991b1b;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border-left: 4px solid #ef4444;
+  font-weight: 500;
+}
+
+.error {
+  color: #dc2626;
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+  display: block;
+}
+
+.imagenPreview {
+  margin-top: 0.5rem;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 0.5rem;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.imagenPreview img {
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: contain;
+  border-radius: 4px;
 }
 
 @media (max-width: 480px) {
   .formu {
-    margin: 1rem auto;
-    padding: 1rem;
-    width: 95%;
+    margin: 1rem;
+    padding: 1.25rem;
   }
-
-  .formu button {
-    padding: 0.6rem;
+  .botones {
+    flex-direction: column;
   }
-  .error {
-    color: #d32f2f;
-    font-size: 0.75rem;
-    margin-top: 0.25rem;
-    display: block;
+  .botones button {
+    width: 100%;
   }
 }

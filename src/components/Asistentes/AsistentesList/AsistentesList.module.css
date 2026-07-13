@@ -7,3 +7,17 @@
   margin: 0 auto;
   max-width: 1200px;        
 }
+
+.loading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #555;
+  padding: 2rem;
+}
+
+.error {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #e53e3e;
+  padding: 2rem;
+}

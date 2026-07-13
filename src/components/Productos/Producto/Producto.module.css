@@ -1,5 +1,5 @@
 .productCard {
-  position: relative;  /* para posicionar la estrella */
+  position: relative;  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +24,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
-  background: transparent; /* sin gris */
+  background: transparent; 
 }
 
 .productImage {
@@ -35,8 +35,6 @@
   object-fit: contain;
 }
 
-/* Si quieres que se vea completa sin recortes, usa 'contain' pero asegura que el fondo sea blanco y la imagen tenga un padding */
-/* Versión alternativa con contain y padding */
 .productImageContain {
   width: auto;
   height: auto;

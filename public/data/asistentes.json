@@ -1,5 +1,4 @@
-[
-        { 
+[         { 
         "id": 1, 
         "nombre": "Enrique Rivera",
         "tarea": "Product Owner",
@@ -8,10 +7,10 @@
         },
         {
         "id": 2,  
-        "nombre": "Maria Gomez", 
-        "tarea": "Diseñadora UI/UX",
+        "nombre": "Kiara Zarate", 
+        "tarea": "Socia Gerente",
         "imagen": "/images/Maria.png",
-        "correo": "mariagomez@commerce.com"      
+        "correo": "kiazazarate@commerce.com"      
         },
         {
         "id": 3, 

@@ -72,7 +72,6 @@ function FormularioContactoContainer() {
     }
     setLoading(true);
     try {
-      //enviar datos a backend
       console.log("Datos de contacto:", datosForm);
       alert("Mensaje enviado correctamente");
       setDatosForm({ nombreCompleto: "", empresa: "", correo: "", telefono: "", mensaje: "" });

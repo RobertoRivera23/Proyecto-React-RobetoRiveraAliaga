@@ -10,7 +10,6 @@ function Home() {
     fetch("/data/productos.json")
       .then((res) => res.json())
       .then((data) => {
-        // Normalizar destacado (por si viene como string)
         const normalizados = data.map((p) => ({
           ...p,
           destacado: p.destacado === "true",
@@ -23,7 +22,6 @@ function Home() {
 
   return (
     <>
-      {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroOverlay}>
           <div className={styles.heroContent}>
@@ -45,7 +43,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Barra de Beneficios */}
       <section className={styles.benefitsBar}>
         <div className={styles.benefitsContainer}>
           <div className={styles.benefitItem}>✅ Envíos a todo el país</div>
@@ -68,7 +65,6 @@ function Home() {
         </div>
       </section>*/}
 
-      {/* Por qué elegirnos */}
       <section className={styles.whyUs}>
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>¿Por qué elegir Importadora Commerce?</h2>
@@ -92,7 +88,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Testimonios (opcional, sugerido) */}
       <section className={styles.testimonials}>
         <div className={styles.container}>
           <h2 className={styles.sectionTitle}>Lo que dicen nuestros clientes</h2>
