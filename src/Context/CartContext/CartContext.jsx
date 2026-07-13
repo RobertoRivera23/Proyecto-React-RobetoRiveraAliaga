@@ -42,7 +42,7 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  // Vacía todo el carrito
+  // Vacía todo el carrito completo
   const clearCart = () => {
     setCart([]);
     setCuponAplicado(null);

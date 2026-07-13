@@ -35,7 +35,7 @@ const navigate = useNavigate();
   }
 
 
-  // Si el carrito está vacío, mostramos mensaje
+  // Si el carrito está vacío mostramos mensaje
   if (cart.length === 0) {
     return (
       <div className={styles.cartContainer}>

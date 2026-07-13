@@ -7,7 +7,7 @@ const Proximamente = () => {
     <div className={styles.container}>
       <h1 className={styles.title}>🚧 Próximamente</h1>
       <p className={styles.message}>
-        Estamos trabajando la gestión de pagos 😕.
+        Estamos trabajando la gestión de pagos.
         <br />
         ¡Vuelve pronto para completar tu compra!
         <br />
