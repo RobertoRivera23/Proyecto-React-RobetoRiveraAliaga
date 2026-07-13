@@ -1,7 +1,7 @@
 import styles from "./GestionProductos.module.css";
 import React, { useState, useEffect } from "react";
 import { db } from "../../../firebase/config";
-import FormularioProducto from "../FormularioProducto/FormularioProducto"; 
+import FormularioProducto from "../FormularioProducto/FormularioProducto";
 import {
   collection,
   getDocs,
@@ -9,7 +9,8 @@ import {
   doc,
   addDoc,
   updateDoc,
-} from "firebase/firestore"; 
+} from "firebase/firestore";
+import ModalConfirmacion from "../../ModalConfirmacion/ModalConfirmacion";
 
 const GestionProductos = () => {
   const [productos, setProductos] = useState([]);
@@ -17,7 +18,14 @@ const GestionProductos = () => {
   const [productoEditadoId, setProductoEditadoId] = useState(null);
   const [mensajeExito, setMensajeExito] = useState("");
 
-  //Carga de datos al incio 
+  //Para el modal
+  const [modalEliminar, setModalEliminar] = useState({
+    isOpen: false,
+    productoId: null,
+    nombreProducto: "",
+  });
+
+  //Carga de datos al incio
   const estadoInicialDelForm = {
     nombre: "",
     categoria: "",
@@ -27,12 +35,14 @@ const GestionProductos = () => {
     destacado: false,
     imagen: null,
     urlImagen: "",
+    id: "",
   };
 
   const [datosForm, setDatosForm] = useState(estadoInicialDelForm);
 
-  //Carga de errores inicio 
+  //Carga de errores inicio
   const [errores, setErrores] = useState({
+    id: "",
     nombre: "",
     categoria: "",
     precio: "",
@@ -62,7 +72,7 @@ const GestionProductos = () => {
           const data = doc.data();
           return {
             ...data,
-            idFirestore: doc.id, 
+            idFirestore: doc.id,
           };
         }),
       );
@@ -75,6 +85,12 @@ const GestionProductos = () => {
   //Validacion de datos
   const validarCampo = (nombre, valor) => {
     switch (nombre) {
+      case "id":
+        if (!valor) return "El ID es obligatorio";
+        if (!/^\d+$/.test(valor)) return "Solo números enteros positivos";
+        if (parseInt(valor) <= 0) return "Debe ser mayor a 0";
+        if (parseInt(valor) > 9999999) return "ID demasiado alto";
+        return "";
       case "nombre":
         if (!valor.trim()) return "El nombre es obligatorio";
         if (valor.length < 3) return "Mínimo 3 caracteres";
@@ -146,6 +162,7 @@ const GestionProductos = () => {
     setModoEdicion(true);
     setProductoEditadoId(producto.idFirestore);
     setDatosForm({
+              id: producto.id?.toString() || "",
       nombre: producto.nombre || "",
       categoria: producto.categoria || "",
       precio: producto.precio?.toString() || "",
@@ -169,21 +186,37 @@ const GestionProductos = () => {
   };
 
   //Eliminar productos
-  const handleDelete = async (idFirestore) => {
-    const confirmacion = window.confirm(
-      "Esta seguro de que desea eliminar este producto?",
-    );
-    if (confirmacion) {
-      try {
-        const docRef = doc(db, "Productos", idFirestore);
-        await deleteDoc(docRef);
-        setProductos(productos.filter((prod) => prod.idFirestore !== idFirestore));
-        alert("Producto Eliminado.");
-      } catch (error) {
-        console.error("Error al eliminar:", error);
-        alert("Error al eliminar el producto.");
-      }
+  const handleDelete = async (idFirestore, nombreProducto) => {
+    setModalEliminar({
+      isOpen: true,
+      productoId: idFirestore,
+      nombreProducto: nombreProducto,
+    });
+  };
+
+  //cuando confirma eliminar ene l modal
+  const confirmarEliminacion = async () => {
+    const { productoId } = modalEliminar;
+    try {
+      const docRef = doc(db, "Productos", productoId);
+      await deleteDoc(docRef);
+      setProductos(productos.filter((prod) => prod.idFirestore !== productoId));
+      alert("Producto eliminado.");
+    } catch (error) {
+      console.error("Error al eliminar:", error);
+      alert("Error al eliminar el producto.");
+    } finally {
+      setModalEliminar({ isOpen: false, productoId: null, nombreProducto: "" });
     }
+  };
+
+  // Cancelar eliminación
+  const cancelarEliminacion = () => {
+    setModalEliminar({
+      isOpen: false,
+      productoId: null,
+      nombreProducto: "",
+    });
   };
 
   // Manejar subir imagen a ImgBB
@@ -222,6 +255,7 @@ const GestionProductos = () => {
 
     // Validar todos los campos
     const nuevosErrores = {
+      id: validarCampo("id", datosForm.id),
       nombre: validarCampo("nombre", datosForm.nombre),
       categoria: validarCampo("categoria", datosForm.categoria),
       precio: validarCampo("precio", datosForm.precio),
@@ -248,13 +282,14 @@ const GestionProductos = () => {
       // Mantiene la imagen si no sube otra
       let urlImagen = datosForm.urlImagen;
 
-      // Sube si hay imagen nueva 
+      // Sube si hay imagen nueva
       if (datosForm.imagen instanceof File) {
         urlImagen = await subirImagen(datosForm.imagen);
       }
 
       // Enviar el producto completo a la API
       const productoCompleto = {
+        id: parseInt(datosForm.id),
         nombre: datosForm.nombre,
         categoria: datosForm.categoria,
         precio: parseFloat(datosForm.precio),
@@ -354,7 +389,7 @@ const GestionProductos = () => {
               </button>
               <button
                 className={styles.btnEliminar}
-                onClick={() => handleDelete(prod.idFirestore)}
+                onClick={() => handleDelete(prod.idFirestore, prod.nombre)}
               >
                 🗑️ Eliminar
               </button>
@@ -362,6 +397,16 @@ const GestionProductos = () => {
           </div>
         ))}
       </div>
+      <ModalConfirmacion
+        isOpen={modalEliminar.isOpen}
+        onClose={cancelarEliminacion}
+        onConfirm={confirmarEliminacion}
+        titulo="Eliminar producto"
+        mensaje="¿Estás seguro de que deseas eliminar este producto? Esta acción no se puede deshacer."
+        nombreItem={modalEliminar.nombreProducto}
+        confirmText="Eliminar"
+        cancelText="Cancelar"
+      />
     </div>
   );
 };

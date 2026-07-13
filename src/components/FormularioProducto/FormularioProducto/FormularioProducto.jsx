@@ -24,6 +24,20 @@ function FormularioProducto({
       )}
 
       <div>
+        <label>ID (Código):</label>
+        <input
+          type="number"
+          placeholder="Ej: 123"
+          name="id"
+          value={datosForm?.id || ""}
+          onChange={handleChange}
+          min="1"
+          step="1"
+        />
+        {errores?.id && <span className={Style.error}>{errores.id}</span>}
+      </div>
+
+      <div>
         <label>Nombre del Producto:</label>
         <input
           type="text"
@@ -32,7 +46,9 @@ function FormularioProducto({
           value={datosForm?.nombre || ""}
           onChange={handleChange}
         />
-        {errores?.nombre && <span className={Style.error}>{errores.nombre}</span>}
+        {errores?.nombre && (
+          <span className={Style.error}>{errores.nombre}</span>
+        )}
       </div>
 
       <div>
@@ -44,7 +60,9 @@ function FormularioProducto({
           value={datosForm?.categoria || ""}
           onChange={handleChange}
         />
-        {errores?.categoria && <span className={Style.error}>{errores.categoria}</span>}
+        {errores?.categoria && (
+          <span className={Style.error}>{errores.categoria}</span>
+        )}
       </div>
 
       <div>
@@ -56,7 +74,9 @@ function FormularioProducto({
           value={datosForm?.precio || ""}
           onChange={handleChange}
         />
-        {errores?.precio && <span className={Style.error}>{errores.precio}</span>}
+        {errores?.precio && (
+          <span className={Style.error}>{errores.precio}</span>
+        )}
       </div>
 
       <div>
@@ -80,7 +100,9 @@ function FormularioProducto({
           value={datosForm?.detalle || ""}
           onChange={handleChange}
         />
-        {errores?.detalle && <span className={Style.error}>{errores.detalle}</span>}
+        {errores?.detalle && (
+          <span className={Style.error}>{errores.detalle}</span>
+        )}
       </div>
 
       <div>
@@ -105,7 +127,9 @@ function FormularioProducto({
             />
           </div>
         )}
-        {errores?.imagen && <span className={Style.error}>{errores.imagen}</span>}
+        {errores?.imagen && (
+          <span className={Style.error}>{errores.imagen}</span>
+        )}
       </div>
 
       <div className={Style.checkboxContainer}>
@@ -116,7 +140,9 @@ function FormularioProducto({
           checked={datosForm?.destacado || false}
           onChange={handleChange}
         />
-        {errores?.destacado && <span className={Style.error}>{errores.destacado}</span>}
+        {errores?.destacado && (
+          <span className={Style.error}>{errores.destacado}</span>
+        )}
       </div>
 
       <div className={Style.botones}>
@@ -124,8 +150,8 @@ function FormularioProducto({
           {loading
             ? "Guardando..."
             : modoEdicion
-            ? "Actualizar Producto"
-            : "Guardar Producto"}
+              ? "Actualizar Producto"
+              : "Guardar Producto"}
         </button>
         {modoEdicion && (
           <button type="button" onClick={handleCancelarEdicion}>
