@@ -8,7 +8,8 @@ export const CartContext = createContext();
 // Hook porseonalizado
 export const useCart = () => {
   const context = useContext(CartContext);
-  if (!context) throw new Error("useCart debe usarse dentro de un CartProvider");
+  if (!context)
+    throw new Error("useCart debe usarse dentro de un CartProvider");
   return context;
 };
 
@@ -16,8 +17,8 @@ export const useCart = () => {
 export const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   // codigo e descuento
-  const [ cuponAplicado, setCuponAplicado ] = useState(null);
-  const [ errorCupon, setErrorCupon ] = useState(null);
+  const [cuponAplicado, setCuponAplicado] = useState(null);
+  const [errorCupon, setErrorCupon] = useState(null);
 
   // Agrega o actualiza un producto en el carrito
   const addToCart = (producto, cantidad = 1) => {
@@ -25,14 +26,14 @@ export const CartProvider = ({ children }) => {
     if (cantidad <= 0) return;
 
     // Buscamos si el producto esta en el carrito
-    const itemExiste = cart.find(item => item.id === producto.id);
+    const itemExiste = cart.find((item) => item.id === producto.id);
 
     if (itemExiste) {
       // Actualizamos la cantidad sumando
-      const updateCart = cart.map(item =>
+      const updateCart = cart.map((item) =>
         item.id === producto.id
           ? { ...item, cantidad: item.cantidad + cantidad }
-          : item
+          : item,
       );
       setCart(updateCart);
     } else {
@@ -46,30 +47,42 @@ export const CartProvider = ({ children }) => {
     setCart([]);
     setCuponAplicado(null);
     setErrorCupon(null);
-  }
+  };
 
   // Elimina un producto por su id
   const removeItem = (productoId) => {
-    setCart(prevCart => prevCart.filter(item => item.id !== productoId));
+    console.log('Elimina producto:', productoId);
+  setCart(prevCart => {
+    const newCart = prevCart.filter(item => item.id !== productoId);
+    return newCart;
+  });
   };
 
-  // Devuelve la cantidad total de productos 
+  // Devuelve la cantidad total de productos
   const getCartQuantity = () => {
     return cart.reduce((acc, item) => acc + item.cantidad, 0);
   };
 
-  //Total sin descuento
-  const getSubtotal =  () => {
+  //Total sin descuento 
+  const getSubtotal = () => {
+    const subtotal = cart.reduce(
+      (acc, item) => acc + item.precio * item.cantidad,
+      0,
+    );
+    console.log("Subtotal:", subtotal, "cart:", cart);
     return cart.reduce((acc, item) => acc + item.precio * item.cantidad, 0);
-  }
+  };
 
   //Precio total con descuento
   const getCartTotal = () => {
     const subtotal = getSubtotal();
     if (cuponAplicado) {
       const descuento = (subtotal * cuponAplicado.descuento) / 100;
-      return subtotal - descuento;
+      const total = subtotal - descuento;
+      console.log("Total:", total, "descuento:", descuento);
+      return total;
     }
+    console.log("Total (sin cupón):", subtotal);
     return subtotal;
   };
 
@@ -77,21 +90,27 @@ export const CartProvider = ({ children }) => {
   const getDescuento = () => {
     const subtotal = getSubtotal();
     if (cuponAplicado) {
-      return (subtotal * cuponAplicado.descuento) / 100;
+      const descuento = (subtotal * cuponAplicado.descuento) / 100;
+      console.log("Descuento:", descuento);
+      return descuento;
     }
+    console.log("Descuento: 0");
     return 0;
-  }
+  };
 
   //bucamos aplicar el cupon de firestore
   const aplicarCupon = async (codigo) => {
     setErrorCupon(null);
     if (!codigo || codigo.trim() === "") {
-      setErrorCupon("Ingresa el código de cupón.")
+      setErrorCupon("Ingresa el código de cupón.");
       return false;
     }
 
     try {
-      const quer = query(collection(db, "Cupones"), where("codigo", "==", codigo.trim()));
+      const quer = query(
+        collection(db, "Cupones"),
+        where("codigo", "==", codigo.trim()),
+      );
       const querySnapshot = await getDocs(quer);
       if (querySnapshot.empty) {
         setErrorCupon("El cupón no es válido.");
@@ -127,9 +146,9 @@ export const CartProvider = ({ children }) => {
     setErrorCupon(null);
   };
 
-    // Cantidad de un producto 
+  // Cantidad de un producto
   const getCantidadActual = (productoId) => {
-    const item = cart.find(item => item.id === productoId);
+    const item = cart.find((item) => item.id === productoId);
     return item ? item.cantidad : 0;
   };
 
