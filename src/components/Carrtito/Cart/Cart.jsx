@@ -3,12 +3,9 @@ import styles from "./Cart.module.css";
 import { useCart } from "../../../Context/CartContext/CartContext";
 import { Link, useNavigate } from "react-router-dom";
 
+
 const Cart = () => {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    console.log("🔄 cuponAplicado cambiado:", cuponAplicado);
-  }, [cuponAplicado]);
 
   const {
     cart,
@@ -25,6 +22,13 @@ const Cart = () => {
 
   const [codigoCupon, setCodigoCupon] = useState("");
 
+ 
+  const subtotal = getSubtotal();
+  const descuento = getDescuento();
+  const total = getCartTotal();
+
+  console.log("🎨 Cart RENDER — subtotal:", subtotal, "descuento:", descuento, "total:", total);
+
   const handleAplicarCupon = async (e) => {
     e.preventDefault();
     if (!codigoCupon.trim()) return;
@@ -32,12 +36,10 @@ const Cart = () => {
     setCodigoCupon("");
   };
 
-  //Redirige a proximamente
   const handleIrAPagar = () => {
     navigate("/proximamente");
   };
 
-  // Si el carrito está vacío mostramos mensaje
   if (cart.length === 0) {
     return (
       <div className={styles.cartContainer}>
@@ -51,10 +53,6 @@ const Cart = () => {
       </div>
     );
   }
-
-  const subtotal = getSubtotal();
-  const descuento = getDescuento();
-  const total = getCartTotal();
 
   return (
     <div className={styles.cartContainer}>

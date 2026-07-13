@@ -51,11 +51,7 @@ export const CartProvider = ({ children }) => {
 
   // Elimina un producto por su id
   const removeItem = (productoId) => {
-    console.log('Elimina producto:', productoId);
-  setCart(prevCart => {
-    const newCart = prevCart.filter(item => item.id !== productoId);
-    return newCart;
-  });
+    setCart((prevCart) => prevCart.filter((item) => item.id !== productoId));
   };
 
   // Devuelve la cantidad total de productos
@@ -63,7 +59,7 @@ export const CartProvider = ({ children }) => {
     return cart.reduce((acc, item) => acc + item.cantidad, 0);
   };
 
-  //Total sin descuento 
+  //Total sin descuento
   const getSubtotal = () => {
     const subtotal = cart.reduce(
       (acc, item) => acc + item.precio * item.cantidad,
