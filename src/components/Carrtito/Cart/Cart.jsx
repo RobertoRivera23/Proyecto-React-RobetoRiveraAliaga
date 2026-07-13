@@ -4,13 +4,17 @@ import { useCart } from "../../../Context/CartContext/CartContext";
 import { Link, useNavigate } from "react-router-dom";
 
 const Cart = () => {
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  const { 
-    cart, 
-    getCartTotal, 
-    clearCart, 
-    removeItem,  
+  useEffect(() => {
+    console.log("🔄 cuponAplicado cambiado:", cuponAplicado);
+  }, [cuponAplicado]);
+
+  const {
+    cart,
+    getCartTotal,
+    clearCart,
+    removeItem,
     aplicarCupon,
     eliminarCupon,
     cuponAplicado,
@@ -19,12 +23,11 @@ const navigate = useNavigate();
     getSubtotal,
   } = useCart();
 
-  const [ codigoCupon, setCodigoCupon ] = useState("");
+  const [codigoCupon, setCodigoCupon] = useState("");
 
   const handleAplicarCupon = async (e) => {
     e.preventDefault();
-    if (!codigoCupon.trim())
-      return;
+    if (!codigoCupon.trim()) return;
     await aplicarCupon(codigoCupon);
     setCodigoCupon("");
   };
@@ -32,8 +35,7 @@ const navigate = useNavigate();
   //Redirige a proximamente
   const handleIrAPagar = () => {
     navigate("/proximamente");
-  }
-
+  };
 
   // Si el carrito está vacío mostramos mensaje
   if (cart.length === 0) {
@@ -55,7 +57,7 @@ const navigate = useNavigate();
   const total = getCartTotal();
 
   return (
-     <div className={styles.cartContainer}>
+    <div className={styles.cartContainer}>
       <h2 className={styles.cartTitle}>🛒 Mi Carrito</h2>
 
       <div className={styles.cartList}>
@@ -101,8 +103,13 @@ const navigate = useNavigate();
         {errorCupon && <p className={styles.cuponError}>{errorCupon}</p>}
         {cuponAplicado && (
           <div className={styles.cuponAplicado}>
-            <span>Cupón aplicado: <strong>{cuponAplicado.codigo}</strong> ({cuponAplicado.descuento}% de descuento)</span>
-            <button onClick={eliminarCupon} className={styles.eliminarCupon}>✕</button>
+            <span>
+              Cupón aplicado: <strong>{cuponAplicado.codigo}</strong> (
+              {cuponAplicado.descuento}% de descuento)
+            </span>
+            <button onClick={eliminarCupon} className={styles.eliminarCupon}>
+              ✕
+            </button>
           </div>
         )}
       </div>
@@ -115,7 +122,9 @@ const navigate = useNavigate();
         {descuento > 0 && (
           <div className={styles.summaryLine}>
             <span>Descuento ({cuponAplicado?.descuento}%):</span>
-            <span className={styles.discountAmount}>-${descuento.toFixed(2)}</span>
+            <span className={styles.discountAmount}>
+              -${descuento.toFixed(2)}
+            </span>
           </div>
         )}
         <div className={styles.summaryLine}>
@@ -127,7 +136,9 @@ const navigate = useNavigate();
           <button onClick={clearCart} className={styles.clearButton}>
             Vaciar carrito
           </button>
-          <button onClick={handleIrAPagar} className={styles.checkoutButton}>Ir a pagar</button>
+          <button onClick={handleIrAPagar} className={styles.checkoutButton}>
+            Ir a pagar
+          </button>
         </div>
       </div>
     </div>
