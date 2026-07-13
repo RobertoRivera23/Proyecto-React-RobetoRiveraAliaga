@@ -1,9 +1,11 @@
 import { useState } from "react";
 import styles from "./Cart.module.css";
 import { useCart } from "../../../Context/CartContext/CartContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Cart = () => {
+const navigate = useNavigate();
+
   const { 
     cart, 
     getCartTotal, 
@@ -26,6 +28,11 @@ const Cart = () => {
     await aplicarCupon(codigoCupon);
     setCodigoCupon("");
   };
+
+  //Redirige a proximamente
+  const handleIrAPagar = () => {
+    navigate("/proximamente");
+  }
 
 
   // Si el carrito está vacío, mostramos mensaje
@@ -120,7 +127,7 @@ const Cart = () => {
           <button onClick={clearCart} className={styles.clearButton}>
             Vaciar carrito
           </button>
-          <button className={styles.checkoutButton}>Ir a pagar</button>
+          <button onClick={handleIrAPagar} className={styles.checkoutButton}>Ir a pagar</button>
         </div>
       </div>
     </div>

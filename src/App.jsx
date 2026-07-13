@@ -15,6 +15,7 @@ import Login from "./components/Login/Login.jsx";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx";
 import { AuthProvider } from "./Context/AuthContext/AuthContext.jsx";
 import Register from "./components/Login/Register/Register.jsx";
+import Proximamente from "./components/Pagos/Proximamente/Proximamente.jsx";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
                 element={<FormularioContactoContainer />}
               />
               <Route path="/carrito" element={<Cart />} />
+              <Route path="/proximamente" element={<Proximamente />} />
               <Route path="/productos/:id" element={<ProductoDetalle />} />
               {/* <Route path="/productosN" element={< ProductosNacionales Mensaje={"Nuestros Productos Nacionales"}/>} />*/}
               

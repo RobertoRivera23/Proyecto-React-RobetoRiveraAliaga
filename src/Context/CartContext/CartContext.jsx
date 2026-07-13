@@ -50,7 +50,7 @@ export const CartProvider = ({ children }) => {
 
   // Elimina un producto por su id
   const removeItem = (productoId) => {
-    setCart(cart.filter(item => item.id !== productoId));
+    setCart(prevCart => prevCart.filter(item => item.id !== productoId));
   };
 
   // Devuelve la cantidad total de productos 
