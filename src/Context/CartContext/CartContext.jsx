@@ -25,21 +25,22 @@ export const CartProvider = ({ children }) => {
     // Validamos que cantidad debe ser mayor a 0
     if (cantidad <= 0) return;
 
-    // Buscamos si el producto esta en el carrito
-    const itemExiste = cart.find((item) => item.id === producto.id);
+    setCart((prevCart) => {
+      // Buscamos si el producto esta en el carrito
+      const itemExiste = cart.find((item) => item.id === producto.id);
 
-    if (itemExiste) {
-      // Actualizamos la cantidad sumando
-      const updateCart = cart.map((item) =>
-        item.id === producto.id
-          ? { ...item, cantidad: item.cantidad + cantidad }
-          : item,
-      );
-      setCart(updateCart);
-    } else {
-      // Si no esta lo agregamos como nuevo item
-      setCart([...cart, { ...producto, cantidad }]);
-    }
+      if (itemExiste) {
+        // Actualizamos la cantidad sumando
+        return prevCart.map((item) =>
+          item.id === producto.id
+            ? { ...item, cantidad: item.cantidad + cantidad }
+            : item,
+        );
+      } else {
+        // Si no esta lo agregamos como nuevo item
+       return [...prevCart, { ...producto, cantidad }];
+      }
+    });
   };
 
   // Vacía todo el carrito completo

@@ -16,10 +16,12 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute.jsx";
 import { AuthProvider } from "./Context/AuthContext/AuthContext.jsx";
 import Register from "./components/Login/Register/Register.jsx";
 import Proximamente from "./components/Pagos/Proximamente/Proximamente.jsx";
+import { CartProvider } from "./Context/CartContext/CartContext.jsx";
 
 function App() {
   return (
     <>
+    <CartProvider>
       <AuthProvider>
           <Routes>
             <Route path="/Login" element={<Login />} />
@@ -62,6 +64,7 @@ function App() {
             </Route>
           </Routes>
       </AuthProvider>
+    </CartProvider>
     </>
   );
 }

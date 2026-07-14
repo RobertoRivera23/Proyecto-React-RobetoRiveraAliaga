@@ -3,31 +3,41 @@ import styles from "./Cart.module.css";
 import { useCart } from "../../../Context/CartContext/CartContext";
 import { Link, useNavigate } from "react-router-dom";
 
-
 const Cart = () => {
+  console.log('Cart render');
+  console.log("🔄 Cart renderizado");
   const navigate = useNavigate();
 
   const {
     cart,
-    getCartTotal,
-    clearCart,
+    addToCart,
     removeItem,
+    clearCart,
+    getCantidadActual,
+    getCartQuantity,
+    getCartTotal,
+    getSubtotal,
+    getDescuento,
     aplicarCupon,
     eliminarCupon,
     cuponAplicado,
     errorCupon,
-    getDescuento,
-    getSubtotal,
   } = useCart();
 
   const [codigoCupon, setCodigoCupon] = useState("");
 
- 
   const subtotal = getSubtotal();
   const descuento = getDescuento();
   const total = getCartTotal();
 
-  console.log("🎨 Cart RENDER — subtotal:", subtotal, "descuento:", descuento, "total:", total);
+  console.log(
+    "🎨 Cart RENDER — subtotal:",
+    subtotal,
+    "descuento:",
+    descuento,
+    "total:",
+    total,
+  );
 
   const handleAplicarCupon = async (e) => {
     e.preventDefault();
@@ -54,6 +64,7 @@ const Cart = () => {
     );
   }
 
+  console.log("Renderizando con subtotal:", subtotal, "total:", total);
   return (
     <div className={styles.cartContainer}>
       <h2 className={styles.cartTitle}>🛒 Mi Carrito</h2>
